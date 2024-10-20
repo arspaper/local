@@ -1,11 +1,12 @@
-with open("26_17537.txt") as myFile:
-    seats = myFile.readlines()
-    N, M, K = seats[0].split()
-    myMap = [0] * int(K)
-    for i in range(int(K)):
-        myMap[i] = [0] * int(M)
-    for i in range(1, int(N)):
-        a, b = seats[i].split()
-        myMap[int(b) - 1][int(a) - 1] = 1
-    print(myMap)
-    # print(myMap)
+
+# import pandas as pd
+import csv
+
+
+# df = pd.read_excel('09.xlsx')
+# df.to_csv('09.csv', index=False)
+
+with open('09.csv', newline='', encoding='utf-8') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        for i in range(6):

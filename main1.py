@@ -1,34 +1,21 @@
-from turtle import *
+
+import pandas as pd
+import csv
 
 
-k = 10
-tracer(False)
-pendown()
-color('RED')
-for i in range(2):
-    forward(21 * k)
-    right(90)
-    forward(27 * k)
-    right(90)
-penup()
-forward(9 * k)
-right(90)
-forward(10 * k)
-right(270)
-pendown()
-for i in range(2):
-    forward(86 * k)
-    right(90)
-    forward(47 * k)
-    right(90)
-penup()
-color('BLACK')
-for y in range(-100, 20):
-    for x in range(0, 60):
-        goto(x * k, y * k)
-        dot(5)
-
-exitonclick()
+df = pd.read_excel('99.xlsx')
+df.to_csv('99.csv', index=False)
 
 
-print(18 * 13)
+f = open('99.csv')
+k = 0
+p = []
+for s in f:
+
+    a = sorted(list(map(int,s.split(','))))
+    for i in range(len(a)-1):
+        if a[i]==a[i+1] and len(set(a))==5:
+            p.append(a[i])
+            if (a[i])*2 < (sum(a)-((a[i])*2))/4:
+                k += 1
+print(k)
